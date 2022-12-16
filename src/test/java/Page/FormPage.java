@@ -104,7 +104,7 @@ public class FormPage extends BasePage {
     }
 
     public void clickOk(){
-        new WebDriverWait(driver , Duration.ofSeconds(10)).until(ExpectedConditions
+        new WebDriverWait(driver , Duration.ofSeconds(4)).until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath("//button[text()='Ok']"))).click();
     }
 

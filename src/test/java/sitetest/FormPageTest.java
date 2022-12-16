@@ -80,6 +80,7 @@ public class FormPageTest extends BaseTest {
         formPage.fillOutForm(inputList);
 
         for(int i = 0 ; i < time; i++){
+            formPage.sendEmail(emailForm);
             formPage.clickSubmit();
             formPage.clickOk();
             List<String> outputList = formPage.getTableData();
@@ -98,6 +99,7 @@ public class FormPageTest extends BaseTest {
 
         formPage.fillOutForm(inputList);
 
+        formPage.sendEmail(emailForm);
         formPage.clickSubmit();
         Assertions.assertEquals( emailError, formPage.getEmailError());
     }
