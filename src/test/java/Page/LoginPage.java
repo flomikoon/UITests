@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='loginEmail']")
@@ -22,12 +24,13 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"authButton\"]")
     private WebElement submitButton;
 
-    public LoginPage(){
+    public LoginPage() throws IOException {
+        super();
         driver.get(URL);
         PageFactory.initElements(driver , this);
     }
 
-    public FormPage login(String emailValue , String passwordValue){
+    public FormPage login(String emailValue , String passwordValue) throws IOException {
         this.enterEmail(emailValue);
         this.enterPassword(passwordValue);
         this.pressSubmit();

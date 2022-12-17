@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,8 @@ public class FormPage extends BasePage {
 
     @FindBy(id = "blankNameError")
     private WebElement nameError;
-    public FormPage(){
+    public FormPage() throws IOException {
+        super();
         PageFactory.initElements(driver , this);
     }
 

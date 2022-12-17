@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class FormPageTest extends BaseTest {
         return inputList;
     }
 
-    private FormPage login(){
+    private FormPage login() throws IOException {
         LoginPage loginPage = new LoginPage();
         FormPage formPage = loginPage.login(email , password);
 
@@ -52,7 +53,7 @@ public class FormPageTest extends BaseTest {
     @Tag("Successful completion form")
     @CsvFileSource(resources = "resources/SuccessfulCompletionFormTest.csv")
     public void successfulCompletionForm(String emailForm , String nameForm , String genderForm
-            , boolean checkBox1 , boolean checkBox2 , int radioButton){
+            , boolean checkBox1 , boolean checkBox2 , int radioButton) throws IOException {
 
         FormPage formPage = login();
 
@@ -72,7 +73,7 @@ public class FormPageTest extends BaseTest {
     @Tag("Submit form too many times")
     @CsvFileSource(resources = "resources/SubmitFormTooManyTimesTest.csv")
     public void addAllotDataForm(String emailForm , String nameForm , String genderForm
-            , boolean checkBox1 , boolean checkBox2 , int radioButton , int time){
+            , boolean checkBox1 , boolean checkBox2 , int radioButton , int time) throws IOException {
 
         FormPage formPage = login();
         ArrayList<String> inputList = createInputList(emailForm , nameForm , genderForm , checkBox1 , checkBox2 , radioButton);
@@ -92,7 +93,7 @@ public class FormPageTest extends BaseTest {
     @Tag("Submit Form With Uncorrected Email Field Test.csv")
     @CsvFileSource(resources = "resources/SubmitFormWithUncorrectedEmailFieldTest.csv")
     public void submitFormWithUncorrectedEmailFiled(String emailForm , String nameForm , String genderForm
-            , boolean checkBox1 , boolean checkBox2 , int radioButton){
+            , boolean checkBox1 , boolean checkBox2 , int radioButton) throws IOException {
 
         FormPage formPage = login();
         ArrayList<String> inputList = createInputList(emailForm , nameForm , genderForm , checkBox1 , checkBox2 , radioButton);
@@ -106,7 +107,7 @@ public class FormPageTest extends BaseTest {
 
     @Tag("Submit Form With Empty Email Field Test")
     @Test
-    public void submitFormWithEmptyEmailFiled(){
+    public void submitFormWithEmptyEmailFiled() throws IOException {
 
         FormPage formPage = login();
         ArrayList<String> inputList = createInputList("", name, femaleGender , true , true , 1);
@@ -119,7 +120,7 @@ public class FormPageTest extends BaseTest {
 
     @Tag("Submit Form With Empty Name Field Test")
     @Test
-    public void submitFormWithEmptyNameFiled(){
+    public void submitFormWithEmptyNameFiled() throws IOException {
 
         FormPage formPage = login();
         ArrayList<String> inputList = createInputList(email , "", femaleGender , true , true , 1);
@@ -134,7 +135,7 @@ public class FormPageTest extends BaseTest {
     @Tag("Submit Form With Uncorrected Name Field Test.csv")
     @CsvFileSource(resources = "resources/SubmitFormWithUncorrectedNameFieldTest.csv")
     public void submitFormWithUncorrectedNameFiled(String emailForm , String nameForm , String genderForm
-            , boolean checkBox1 , boolean checkBox2 , int radioButton){
+            , boolean checkBox1 , boolean checkBox2 , int radioButton) throws IOException {
 
         FormPage formPage = login();
         ArrayList<String> inputList = createInputList(emailForm , nameForm , genderForm , checkBox1 , checkBox2 , radioButton);

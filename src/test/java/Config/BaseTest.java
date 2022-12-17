@@ -38,6 +38,6 @@ abstract public class BaseTest {
     @AfterAll
     public static void close(){
        // driver.close();
-        driver.quit();
+        //driver.quit();
     }
 }
